@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # first job - no dependencies
-jid0=$(./sbr submit_clear_previous.sbatch)
+jid0=$(./sbr job0.sbatch)
 echo $jid0
-jid1=$(./sbr --dependency=afterany:$jid0 submit_zerocut.sbatch)
+jid1=$(./sbr --dependency=afterany:$jid0 job1.sbatch)
 echo $jid1
 # multiple jobs can depend on a single job
-jid2=$(./sbr --dependency=afterany:$jid1 submit_ttest.sbatch)
+jid2=$(./sbr --dependency=afterany:$jid1 job2.sbatch)
 echo $jid2
 
-jid3=$(./sbr --dependency=afterany:$jid2 submit_convert_coordinates.sbatch)
+jid3=$(./sbr --dependency=afterany:$jid2 job03.sbatch)
 echo $jid3
+
 # a single job can depend on multiple jobs
 #jid4=$(sbatch  --dependency=afterany:$jid2:$jid3 job4.sh)
 
