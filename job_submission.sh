@@ -9,7 +9,7 @@ echo $jid1
 jid2=$(./sbr --dependency=afterany:$jid1 job2.sbatch)
 echo $jid2
 
-jid3=$(./sbr --dependency=afterany:$jid2 job03.sbatch)
+jid3=$(./sbr --dependency=afterany:$jid2 job3.sbatch)
 echo $jid3
 
 # a single job can depend on multiple jobs
